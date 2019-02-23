@@ -18,20 +18,22 @@ app.get('/', function (req, res)
   result = {'Songs':currentSongs};
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write("<head>"
-            +"<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\""
-            +"integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">"
-            +"<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\""
-            +"integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\""
-            +"crossorigin=\"anonymous\"></script>"
-            +"<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>"  
+            +"<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'"
+            +"integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>"
+            +"<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'"
+            +"integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'"
+            +"crossorigin='anonymous'></script>"
+            +"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"  
             +"<style>" 
             +"body{background-color: #2f4353;"
             +"background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%)};"
             +"p{color:red;}"
             +"h1{color:green;"
             +"font-size:3vw;}");
-  res.write("</style></head><body><div style=\"width: 100%; overflow: hidden;\"><div style=\"width: 600px; float: left;\">");
+  res.write("</style></head><body><div style='width: 100%; overflow: hidden;'><div style='width: 600px; float: left;'>");
+  //---------------------
   // Left Side
+  //---------------------
   res.write("<h1>Session Music Array Worker   --- Jason Smith</h1>");
   //res.write("<h3>Hosted from : " + req.headers.host + "</h3>");
   res.write("<p>Use /add to add a new song to session collection.</p>");
@@ -40,13 +42,15 @@ app.get('/', function (req, res)
   res.write("<p>Use /clear to clear current session music inventory.</p>");
   res.write("<p>Current Tracks :</p>");
   res.write(JSON.stringify(result));
-  res.write("</div><div style=\"margin-left: 620px;\">");
+  res.write("</div><div style='margin-left: 620px;'>");
+  //---------------------
   // Right Side
-  res.write("<div class=\"container\"<div class =\"table-responsive\">");
-  res.write("<table class=\"table table-bordered table-striped\" id =\"song_table\"><tr><th>Current Inventory</th></tr></table></div></div>");
+  //---------------------
+  res.write("<div class='container'<div class ='table-responsive'>");
+  res.write("<table class='table table-bordered table-striped' id ='song_table'><tr><th>Current Inventory</th></tr></table></div></div>");
   res.write("</div></div>");
   res.write("</body><script>");
-  res.write("table = document.getElementById(\"song_table\");");
+  res.write("table = document.getElementById('song_table');");
   res.write("var cell;");
   let i = 1;
   for(var x  in currentSongs){
