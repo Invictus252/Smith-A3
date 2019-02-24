@@ -2,17 +2,13 @@ const express = require('express');
 const app = express();
 
 
-var session = require('express-session'); 
+let session = require('express-session'); 
 
 app.use(session({ secret: 'happy jungle', 
                   resave: false, 
                   saveUninitialized: false, 
                   cookie: { maxAge: 60000 }}))
                   
-
-
-    
-    
 app.get('/', function (req, res)
 {
   result = {'Songs':currentSongs};
@@ -26,37 +22,51 @@ app.get('/', function (req, res)
             +"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"  
             +"<style>" 
             +"body{background-color: #2f4353;"
-            +"background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%)};"
-            +"p{color:red;}"
+            +"background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);}"
+            +"p{color:navy;}"
             +"h1{color:green;"
-            +"font-size:3vw;}");
-  res.write("</style></head><body><div style='width: 100%; overflow: hidden;'><div style='width: 600px; float: left;'>");
+            +"font-size:3vw;}"
+            +"#song_title{color:green;}"
+            +"#song_num{color:red;"
+            +"width:15%;}"
+            +"th,td{text-align:center;}");
+  res.write("</style></head><body><div style='width: 100%; overflow: hidden;'><div style='width: 400px; float: left;'>");
   //---------------------
   // Left Side
   //---------------------
-  res.write("<h1>Session Music Array Worker   --- Jason Smith</h1>");
+  res.write("<h1>Session Music Array Worker</h1>");
+  res.write("<h1>--- Jason Smith</h1>");
   //res.write("<h3>Hosted from : " + req.headers.host + "</h3>");
   res.write("<p>Use /add to add a new song to session collection.</p>");
-  res.write("<p>Use /sort to sort current session  music inventory.</p>");
-  res.write("<p>Use /remove to remove a song from session music inventory.</p>");
-  res.write("<p>Use /clear to clear current session music inventory.</p>");
+  res.write("<p>Use /sort to sort current music inventory.</p>");
+  res.write("<p>Use /remove to remove a song from  music inventory.</p>");
+  res.write("<p>Use /clear to clear current music inventory.</p>");
   res.write("<p>Current Tracks :</p>");
   res.write(JSON.stringify(result));
-  res.write("</div><div style='margin-left: 620px;'>");
+  res.write("</div><div style='margin-left: 420px;'>");
   //---------------------
   // Right Side
   //---------------------
-  res.write("<div class='container'<div class ='table-responsive'>");
-  res.write("<table class='table table-bordered table-striped' id ='song_table'><tr><th>Current Inventory</th></tr></table></div></div>");
-  res.write("</div></div>");
+  res.write("<div class='container' ><div class ='table-responsive'>");
+  res.write("<table  class='table table-bordered table-striped' id ='song_table'><caption>Song Bank</caption>"
+            +"<tr>"
+            +"<th id='song_num'>#</th>"
+            +"<th id='song_title'>Title</th>"
+            +"</tr>"
+            +"</table></div></div></div>");
   res.write("</body><script>");
   res.write("table = document.getElementById('song_table');");
-  res.write("var cell;");
+  res.write("var cell,cell2,row;");
   let i = 1;
+  let y =1;
   for(var x  in currentSongs){
-    res.write("cell = table.insertRow("+i+");");
-    res.write("cell.innerHTML ='"+currentSongs[x]+"';");
+    res.write("row = table.insertRow("+i+");");
+    res.write("cell= row.insertCell(0);");
+    res.write("cell2= row.insertCell(1);");
+    res.write("cell.innerHTML ='"+y+"';");
+    res.write("cell2.innerHTML ='"+currentSongs[x]+"';");
     i++;
+    y++;
   }
   res.write("</script>");
   res.end('');
