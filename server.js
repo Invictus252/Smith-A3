@@ -55,19 +55,19 @@ app.get('/', function (req, res)
            +"    <img id='right_pic' src='https://media.giphy.com/media/1zKA4ewDFV0QK44Arr/giphy.gif' width='80' height='60'></h6>"
            // Buttons SRT|CLR
            +"    <div style='margin-right:3.5%;' align='right'>"
-           +"     <a style='width:47px;margin-right:7px;' class='btn btn-primary btn-sm' href='/sort' role='button'>SRT</a>"
-           +"     <a style='width:47px;' class='btn btn-danger btn-sm' href='/clear' role='button'>CLR</a>"
+           +"     <a style='width:47px;margin-right:7px;' class='btn btn-outline-dark btn-sm' href='/sort' role='button'>SRT</a>"
+           +"     <a style='width:47px;' class='btn btn-outline-danger btn-sm' href='/clear' role='button'>CLR</a>"
            +"    </div>"
            +"   </div>"
            // Forms ADD|REMOVE
            +"   <div style='margin-right:1px;margin-top:5px;'> <form  name='add' action='/add?song=' onsubmit='return validateAddForm()' method='get'>"
            +"    <label class='form-control-sm' for='add_song_name'>Enter song to add: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>"
            +"    <input class='form-control-sm' id='add_song_name' type='text' name='song'>"
-           +"    <input class='btn btn-primary btn-sm' type='submit' value='ADD'></form>");
+           +"    <input class='btn btn-outline-dark btn-sm' type='submit' value='ADD'></form>");
   res.write("     <form  name='remove' action='/remove?song=' onsubmit='return validateRmForm()' method='get'>"
            +"    <label class='form-control-sm' for='rm_song_name'>Enter song to remove: </label>"
            +"    <input class='form-control-sm' id='rm_song_name' type='text' name='song'>"
-           +"    <input class='btn btn-danger btn-sm' type='submit' value='RMV'></form>"
+           +"    <input class='btn btn-outline-danger btn-sm' type='submit' value='RMV'></form>"
            +"   </div>"
            +" </div>"); 
   //---------------------
